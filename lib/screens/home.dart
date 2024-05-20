@@ -10,91 +10,152 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedindex = 0;
+  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color.fromARGB(255, 37, 34, 34),
-        body: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          launchUrl('https://github.com/AzorAha1');
-                        },
-                        child: Image.asset(
-                          'assets/images/gitpngwing.com.png',
-                          width: 55,
-                          color: Colors.white,
+        body: SingleChildScrollView(
+          controller: _scrollController,
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            launchUrl('https://github.com/AzorAha1');
+                          },
+                          child: Image.asset(
+                            'assets/images/gitpngwing.com.png',
+                            width: 55,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 20),
-                      GestureDetector(
-                        onTap: () {
-                          launchUrl('https://youtube.com');
-                        },
-                        child: Image.asset(
-                          'assets/images/pngwing.com.png',
-                          width: 40,
-                          color: Colors.white,
+                        SizedBox(width: 20),
+                        GestureDetector(
+                          onTap: () {
+                            launchUrl(
+                                'https://www.linkedin.com/in/faiz-049968169/');
+                          },
+                          child: Image.asset(
+                            'assets/images/pngwing.com.png',
+                            width: 40,
+                            color: Colors.white,
+                          ),
                         ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        TabButton(
+                          text: 'Home',
+                          isSelected: _selectedindex == 0,
+                          onpress: () => ontabSelected(0),
+                        ),
+                        SizedBox(width: 10),
+                        TabButton(
+                          text: 'About',
+                          isSelected: _selectedindex == 1,
+                          onpress: () => ontabSelected(1),
+                        ),
+                        SizedBox(width: 10),
+                        TabButton(
+                          text: 'Resume',
+                          isSelected: _selectedindex == 2,
+                          onpress: () => ontabSelected(2),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        TabButton(
+                          text: 'Services',
+                          isSelected: _selectedindex == 3,
+                          onpress: () => ontabSelected(3),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        TabButton(
+                          text: 'Projects',
+                          isSelected: _selectedindex == 4,
+                          onpress: () => ontabSelected(4),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        TabButton(
+                          text: 'Experience',
+                          isSelected: _selectedindex == 5,
+                          onpress: () => ontabSelected(5),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                    height: MediaQuery.of(context).size.height,
+                    color: Color.fromARGB(255, 37, 34, 34),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 50, left: 100),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'Hello, My Name is Mohammed Faisal Adamu\n\nSoftware Engineer',
+                                style: TextStyle(fontStyle: FontStyle.italic, fontSize: 30, color: Color.fromARGB(255, 159, 146, 146)),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 150),
+                                child: CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('assets/images/myprofilenow.JPG'),
+                                  radius: 120,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      TabButton(
-                        text: 'Home',
-                        isSelected: _selectedindex == 0,
-                        onpress: () => ontabSelected(0),
-                      ),
-                      SizedBox(width: 10),
-                      TabButton(
-                        text: 'About',
-                        isSelected: _selectedindex == 1,
-                        onpress: () => ontabSelected(1),
-                      ),
-                      SizedBox(width: 10),
-                      TabButton(
-                        text: 'Resume',
-                        isSelected: _selectedindex == 2,
-                        onpress: () => ontabSelected(2),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TabButton(
-                        text: 'Services',
-                        isSelected: _selectedindex == 3,
-                        onpress: () => ontabSelected(3),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TabButton(
-                        text: 'Projects',
-                        isSelected: _selectedindex == 4,
-                        onpress: () => ontabSelected(4),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TabButton(
-                        text: 'Experience',
-                        isSelected: _selectedindex == 5,
-                        onpress: () => ontabSelected(5),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                    )),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Color.fromARGB(255, 37, 34, 34),
+                  child: const Center(
+                      child: Text('About Section',
+                          style: TextStyle(color: Colors.white, fontSize: 24))),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Color.fromARGB(255, 37, 34, 34),
+                  child: Center(
+                      child: Text('Resume Section',
+                          style: TextStyle(color: Colors.white, fontSize: 24))),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Color.fromARGB(255, 37, 34, 34),
+                  child: Center(
+                      child: Text('Services Section',
+                          style: TextStyle(color: Colors.white, fontSize: 24))),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Color.fromARGB(255, 37, 34, 34),
+                  child: Center(
+                      child: Text('Projects Section',
+                          style: TextStyle(color: Colors.white, fontSize: 24))),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -105,6 +166,12 @@ class _HomeState extends State<Home> {
     setState(() {
       _selectedindex = index;
     });
+    //calculate the school position
+    _scrollController.animateTo(
+      MediaQuery.of(context).size.height * index,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOutQuart,
+    );
   }
 }
 
